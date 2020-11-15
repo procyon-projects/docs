@@ -1,9 +1,6 @@
 {
-  "homepage": "https://procyon-projects.github.io/procyon-website",
   "scripts": {
     "examples": "docusaurus-examples",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "docusaurus-start",
     "build": "docusaurus-build",
     "publish-gh-pages": "docusaurus-publish",
