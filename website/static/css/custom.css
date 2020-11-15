@@ -21,3 +21,114 @@
 
 @media only screen and (min-width: 1500px) {
 }
+
+body {
+	background-color:#f7f7f7;
+}
+
+.homeContainer .homeWrapper {
+    padding: 5em 10px;
+}
+
+.noPaddingTop {
+	padding-top:0;
+}
+
+.featureBlock {
+	padding-top:40px;
+	border-radius:10px;
+	background-color: #13ab91;
+	color:#fff;
+}
+
+.projectTitle {
+    color: #fff;
+    font-size: 250%;
+    line-height: 1em;
+}
+
+.button {
+	background: #09a78c;
+    border: 1px solid #09a78c;
+    color: #fff;
+	font-weight: bold;
+}
+
+.button:hover {
+    background: #037965;
+    color: #fff;
+}
+
+a {
+    color: #0a8c76;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0a8c76;
+    text-decoration: none;
+}
+
+.productShowcaseSection h2 {
+    color: #20232a;
+}
+
+.container.paddingTop {
+    padding-top: 5px;
+}
+
+.container.paddingBottom {
+    padding-bottom: 40px;
+}
+
+.toc .toggleNav ul li.navListItemActive a {
+    color: #0a8c76;
+}
+
+.toc .toggleNav ul li a:hover, .toc .toggleNav ul li a:focus {
+    color: #0a8c76;
+}
+
+.onPageNav .toc-headings > li > a.active, .onPageNav .toc-headings > li > a.hover {
+    color: #0a8c76;
+}
+
+.splashBackground {
+	background-color: #20232a;
+}
+
+.fixedHeaderContainer {
+     background: #f7f7f7;
+	border-bottom: 0.5px;
+    border-bottom: #20232a;
+    border-style: solid;
+}
+
+.navigationSlider .slidingNav ul li > a {
+    color: #525456;
+	font-weight: bold;
+	
+}
+
+.headerTitleWithLogo {
+	color: #525456;
+}
+
+.navigationSlider .slidingNav ul li > a:focus, .navigationSlider .slidingNav ul li > a:hover, .navigationSlider .slidingNav ul li.siteNavItemActive > a, .navigationSlider .slidingNav ul li.siteNavGroupActive > a {
+    background-color: #13ab91;
+	color:#fff;
+}
+
+
+.navigationSlider .slidingNav ul {
+    background: #f7f7f7;
+}
+
+
+.navigationSlider .slidingNav ul li > a:focus, .navigationSlider .slidingNav ul li > a:hover, .navigationSlider .slidingNav ul li.siteNavItemActive > a, .navigationSlider .slidingNav ul li.siteNavGroupActive > a {
+      
+}
+
+.productShowcaseSection p {
+    margin-bottom: 10px;
+}

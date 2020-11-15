@@ -1,10 +1,19 @@
 {
   "docs": {
-    "Docusaurus": ["doc1"],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
+    "Getting Started": ["introduction", "quickstart", "benchmarks", "features"],
+    "Examples": ["examples"]
   },
   "docs-other": {
-    "First Category": ["doc4", "doc5"]
+    "Modules": [
+		"modules", 
+		"module-procyon", 
+		"module-procyon-core",
+		"module-procyon-configure",
+		"module-procyon-context",
+		"module-procyon-web",
+		"module-procyon-tx",
+		"module-procyon-orm",
+		"module-procyon-peas"
+	]
   }
 }

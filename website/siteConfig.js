@@ -38,8 +38,8 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
-    {doc: 'doc4', label: 'API'},
+    {doc: 'introduction', label: 'Documentation'},
+    {doc: 'modules', label: 'Modules'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
   ],
@@ -48,15 +48,16 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/favicon.ico',
-  footerIcon: 'img/favicon.ico',
-  favicon: 'img/favicon.ico',
+  headerIcon: 'img/logo.png',
+  footerIcon: 'img/footer-logo.png',
+  favicon: 'img/logo.png',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#2a4406',
-    secondaryColor: '#1d2f04',
+    primaryColor: '#fff',
+    secondaryColor: '#fff',
   },
+
 
   /* Custom fonts for website */
   /*
@@ -73,7 +74,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} Procyon`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -94,7 +95,7 @@ const siteConfig = {
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
-  // docsSideNavCollapsible: true,
+  docsSideNavCollapsible: true,
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
