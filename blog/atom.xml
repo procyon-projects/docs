@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://procyon-projects.github.io/blog</id>
+    <title>Procyon Blog</title>
+    <updated>2020-10-28T06:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://procyon-projects.github.io/blog"/>
+    <subtitle>The best place to stay up-to-date with the latest Procyon news and events.</subtitle>
+    <logo>https://procyon-projects.github.io/img/logo.png</logo>
+    <rights>Copyright © 2020 Procyon</rights>
+    <entry>
+        <title type="html"><![CDATA[Procyon's First Stable Version]]></title>
+        <id>https://procyon-projects.github.io/blog/2020/10/28/first-post.html</id>
+        <link href="https://procyon-projects.github.io/blog/2020/10/28/first-post.html"/>
+        <updated>2020-10-28T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Most of people wonder when the first stable version of the Procyon will be released. The only thing I can say is the fact that it will be released soon. Wait for it!, You won't regret for waiting. It will be legendary. We are working hard.</p> ]]></summary>
+        <author>
+            <name>Burak Köken</name>
+            <uri>http://github.com/burakkoken</uri>
+        </author>
+    </entry>
+</feed>

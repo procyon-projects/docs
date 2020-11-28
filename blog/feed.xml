@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Procyon Blog</title>
+        <link>https://procyon-projects.github.io/blog</link>
+        <description>The best place to stay up-to-date with the latest Procyon news and events.</description>
+        <lastBuildDate>Wed, 28 Oct 2020 06:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Procyon Blog</title>
+            <url>https://procyon-projects.github.io/img/logo.png</url>
+            <link>https://procyon-projects.github.io/blog</link>
+        </image>
+        <copyright>Copyright © 2020 Procyon</copyright>
+        <item>
+            <title><![CDATA[Procyon's First Stable Version]]></title>
+            <link>https://procyon-projects.github.io/blog/2020/10/28/first-post.html</link>
+            <guid>https://procyon-projects.github.io/blog/2020/10/28/first-post.html</guid>
+            <pubDate>Wed, 28 Oct 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Most of people wonder when the first stable version of the Procyon will be released. The only thing I can say is the fact that it will be released soon. Wait for it!, You won't regret for waiting. It will be legendary. We are working hard.</p> ]]></description>
+        </item>
+    </channel>
+</rss>

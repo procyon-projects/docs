@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Features · Procyon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Procyon offers several features to make development process easier. "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Features · Procyon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://procyon-projects.github.io/"/><meta property="og:description" content="Procyon offers several features to make development process easier. "/><meta property="og:image" content="https://procyon-projects.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://procyon-projects.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/logo.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://procyon-projects.github.io/blog/atom.xml" title="Procyon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://procyon-projects.github.io/blog/feed.xml" title="Procyon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Procyon"/><h2 class="headerTitleWithLogo">Procyon</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Documentation</a></li><li class=""><a href="/docs/modules" target="_self">Modules</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Getting Started<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">Quickstart</a></li><li class="navListItem"><a class="navItem" href="/docs/benchmarks">Benchmarks</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/features">Features</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Examples<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/examples">Start using Procyon</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Features</h1></header><article><div><span><p>Procyon offers several features to make development process easier.
+Thanks to them, you code your application and deploy fast. The most important feature
+offered by Procyon is <strong>Dependency Injection</strong>. While application starts, instances are automatically
+injected.</p>
+<p>Here are all list of features offered:</p>
+<ul>
+<li><a href="#dependency-injection">Dependency Injection</a></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#routing">Routing</a></li>
+<li><a href="#logger">Logger</a></li>
+<li><a href="#configurable">Configurable</a></li>
+<li><a href="#fast">Fast</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#transaction-management">Transaction Management</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#request-and-path-variable-binding">Request and Path Variable Binding</a></li>
+<li><a href="#extendable">Extendable</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="dependency-injection"></a><a href="#dependency-injection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dependency Injection</h2>
+<p>Dependency injection is not supported by standard libraries in Go. However, A few libraries like <a href="https://github.com/google/wire">Wire</a>
+developed by Google support it at compile-time while Procyon offers it at runtime. It's the first http
+framework supporting the dependency injection at runtime. Instances created by procyon are called '<strong>Peas</strong>'.</p>
+<p>Note that you need to register construction functions by using the function <strong>core.Register</strong>
+because Go doesn't support something like annotation in Java.</p>
+<p>The example is given below.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">type</span> Struct1 <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// fields...</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">newStruct1</span><span class="hljs-params">()</span> <span class="hljs-title">Struct1</span></span> {
+    <span class="hljs-keyword">return</span> Struct1{}
+}
+
+<span class="hljs-keyword">type</span> Struct2 <span class="hljs-keyword">struct</span> {
+    struct1 Struct1
+    <span class="hljs-comment">// fields ...</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">newStruct2</span><span class="hljs-params">(struct1 Struct1)</span> <span class="hljs-title">Struct2</span></span> {
+    <span class="hljs-keyword">return</span> Struct2{
+        struct1,
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> {
+    core.register(newStruct1)
+    core.register(newStruct2)
+}
+
+...
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="project-structure"></a><a href="#project-structure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Project Structure</h2>
+<p>Thanks to the dependency injection, you can organize your project structure like Controller-Service-Repository.
+You can look into <a href="https://github.com/procyon-projects/procyon-test-app">the test application</a> to understand
+how to use.</p>
+<h2><a class="anchor" aria-hidden="true" id="routing"></a><a href="#routing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Routing</h2>
+<p>You can easily register your handler methods by using <strong>HandlerRegistry</strong> in the method <strong>RegisterHandlers</strong>.</p>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(controller HelloWorldController)</span> <span class="hljs-title">RegisterHandlers</span><span class="hljs-params">(registry web.HandlerRegistry)</span></span> {
+    registry.Register(
+        web.NewHandler(controller.HelloWorld, web.WithPath(<span class="hljs-string">"/api/helloworld"</span>))
+    )
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="logger"></a><a href="#logger" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Logger</h2>
+<p>Procyon offers a standard logger for logging. It can be got through dependency injection.</p>
+<p>The example is given below.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    context <span class="hljs-string">"github.com/procyon-projects/procyon-context"</span>
+)
+
+<span class="hljs-keyword">type</span> TestController <span class="hljs-keyword">struct</span> {
+    logger     context.Logger
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">newTestController</span><span class="hljs-params">(logger context.Logger)</span> <span class="hljs-title">TestController</span></span> {
+    <span class="hljs-keyword">return</span> TestController{}
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="configurable"></a><a href="#configurable" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configurable</h2>
+<p>Procyon application can be easily configured because it is designed according to configuration
+properties. For example, when you want application to start on port 3000, what you need to do is
+to specify the command-line parameter <strong>--server.port</strong> as 3030.  Procyon application contains many
+configuration properties like this.</p>
+<p>Also, You can define your configuration struct and its fields are automatically filled.</p>
+<p>Note that you need to register your configuration struct.</p>
+<p>The example is given below.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">type</span> MyProperties <span class="hljs-keyword">struct</span> {
+    Port              <span class="hljs-keyword">int</span>       <span class="hljs-string">`yaml:"port" json:"port" default:"8080"`</span>
+    ApplicationName   <span class="hljs-keyword">string</span>    <span class="hljs-string">`yaml:"name" json:"name" default:"Test Application"`</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">newMyProperties</span><span class="hljs-params">()</span> *<span class="hljs-title">MyProperties</span></span> {
+    <span class="hljs-keyword">return</span> &amp;MyProperties{}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(properties *MyProperties)</span> <span class="hljs-title">GetPrefix</span><span class="hljs-params">()</span> <span class="hljs-title">string</span></span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"myproperties"</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> {
+    core.register(newMyProperties)
+}
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="fast"></a><a href="#fast" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fast</h2>
+<p>You can look into <a href="/docs/benchmarks">the benchmark result</a> to find out how fast Procyon is.</p>
+<h2><a class="anchor" aria-hidden="true" id="events"></a><a href="#events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Events</h2>
+<p>The integration of events hasn't been completed yet.</p>
+<h2><a class="anchor" aria-hidden="true" id="transaction-management"></a><a href="#transaction-management" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transaction Management</h2>
+<p>The integration of transaction management hasn't been completed yet.</p>
+<h2><a class="anchor" aria-hidden="true" id="error-handling"></a><a href="#error-handling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Error Handling</h2>
+<p>The integration of error handling hasn't been completed yet.</p>
+<h2><a class="anchor" aria-hidden="true" id="request-and-path-variable-binding"></a><a href="#request-and-path-variable-binding" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request and Path Variable Binding</h2>
+<p>The integration of error handling hasn't been completed yet.</p>
+<h2><a class="anchor" aria-hidden="true" id="extendable"></a><a href="#extendable" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Extendable</h2>
+<p>It's easier to extend the application. You can look into the <a href="/docs/modules">modules</a> to find out
+how to do.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/benchmarks"><span class="arrow-prev">← </span><span>Benchmarks</span></a><a class="docs-next button" href="/docs/examples"><span>Start using Procyon</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#dependency-injection">Dependency Injection</a></li><li><a href="#project-structure">Project Structure</a></li><li><a href="#routing">Routing</a></li><li><a href="#logger">Logger</a></li><li><a href="#configurable">Configurable</a></li><li><a href="#fast">Fast</a></li><li><a href="#events">Events</a></li><li><a href="#transaction-management">Transaction Management</a></li><li><a href="#error-handling">Error Handling</a></li><li><a href="#request-and-path-variable-binding">Request and Path Variable Binding</a></li><li><a href="#extendable">Extendable</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/footer-logo.png" alt="Procyon"/></a><div><h5>Modules</h5><a href="/docs/module-procyon">Procyon</a><a href="/docs/module-procyon-core">Procyon Core</a><a href="/docs/module-procyon-context">Procyon Context</a><a href="/docs/module-procyon-peas">Procyon Peas</a><a href="/docs/module-procyon-configure">Procyon Configure</a><a href="/docs/module-procyon-tx">Procyon Transaction</a><a href="/docs/module-procyon-web">Procyon Web</a><a href="/docs/module-procyon-orm">Procyon ORM</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Discord</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/procyon-projects/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Procyon</section></footer></div></body></html>
