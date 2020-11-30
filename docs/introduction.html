@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Getting Started · Procyon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="We prepare and update this guide to help you use Procyon Framework. And we hope you find out"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Getting Started · Procyon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://procyon-projects.github.io/"/><meta property="og:description" content="We prepare and update this guide to help you use Procyon Framework. And we hope you find out"/><meta property="og:image" content="https://procyon-projects.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://procyon-projects.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/logo.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://procyon-projects.github.io/blog/atom.xml" title="Procyon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://procyon-projects.github.io/blog/feed.xml" title="Procyon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Procyon"/><h2 class="headerTitleWithLogo">Procyon</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/introduction" target="_self">Documentation</a></li><li class=""><a href="/docs/modules" target="_self">Modules</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Getting Started<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem navListItemActive"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">Quickstart</a></li><li class="navListItem"><a class="navItem" href="/docs/benchmarks">Benchmarks</a></li><li class="navListItem"><a class="navItem" href="/docs/features">Features</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Getting Started</h1></header><article><div><span><p>We prepare and update this guide to help you use Procyon Framework. And we hope you find out
+all answers to your questions. It's time to build your application by using Procyon.</p>
+<h2><a class="anchor" aria-hidden="true" id="what-is-procyon"></a><a href="#what-is-procyon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is Procyon?</h2>
+<p>Procyon is a HTTP web framework written in Go, powered by <a href="https://github.com/valyala/fasthttp">fasthttp</a>
+and third-part libraries. If you need a comprehensive web framework, then use Procyon.
+Because it provides a lot of modules which include several features.</p>
+<ul>
+<li>It makes it easy to create production-grade applications.</li>
+<li>It aims to ease to build, develop and deploy your web applications quickly in Go.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="third-party-libraries"></a><a href="#third-party-libraries" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Third-Party Libraries</h2>
+<p>We use some third-party libraries while developing Procyon. Here are the list we've used :</p>
+<ul>
+<li><a href="https://github.com/valyala/fasthttp">fasthttp</a>, It is 10 times faster than standard http library.</li>
+<li><a href="https://github.com/json-iterator/go">jsoniter</a>, It is used to encode and decode. It's faster than standard library.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="modules"></a><a href="#modules" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Modules</h2>
+<p>There are a number of modules in Procyon Framework :</p>
+<ul>
+<li><p><strong>procyon :</strong>  It provides all features of Procyon.</p></li>
+<li><p><strong>procyon-core :</strong> This provides core features and utilities for all modules.</p></li>
+<li><p><strong>procyon-configure :</strong> This includes and provides configurations that configure application automatically.</p></li>
+<li><p><strong>procyon-context :</strong> This provides context for Procyon applications.</p></li>
+<li><p><strong>procyon-web :</strong> It provides web support for developing web application.</p></li>
+<li><p><strong>procyon-peas :</strong> This allow us to manage our instances created in Procyon application. Peas are very similar to Java Beans.
+They might be called as Go Beans :)</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="how-to-use-procyon"></a><a href="#how-to-use-procyon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to use Procyon?</h2>
+<p>It is so easy to use Procyon Framework. The only thing you have to do is to add the <strong>Procyon</strong> module into your <strong>go.mod</strong> and
+import it into your code file.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"github.com/procyon-projects/procyon"</span>
+)
+</code></pre>
+<p>Next, You need to invoke the method <strong>procyon.NewProcyonApplication</strong> to create a procyon application in main function.</p>
+<pre><code class="hljs css language-go">myApp := procyon.NewProcyonApplication()
+</code></pre>
+<p>After that, invoke the method <strong>Run</strong> to run the application. It is easy that much to have a simple Procyon application.</p>
+<pre><code class="hljs css language-go">myApp.Run()
+</code></pre>
+<p>Eventually, your code snippet will look like the following.  It is easy that much to have a simple Procyon application.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"github.com/procyon-projects/procyon"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    myApp := procyon.NewProcyonApplication()
+    myApp.Run()
+}
+</code></pre>
+<p>After running, you will see the following console.</p>
+<p><img src="/img/run-console.png" alt="Image of Yaktocat"></p>
+<h2><a class="anchor" aria-hidden="true" id="how-to-contribute-to-procyon"></a><a href="#how-to-contribute-to-procyon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to contribute to Procyon?</h2>
+<ul>
+<li>Contribute to our projects and become a member of our team</li>
+<li>Report bugs you find</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="license"></a><a href="#license" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>License</h2>
+<p>Procyon Framework is released under version 2.0 of the Apache License.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/quickstart"><span>Quickstart</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-procyon">What is Procyon?</a></li><li><a href="#third-party-libraries">Third-Party Libraries</a></li><li><a href="#modules">Modules</a></li><li><a href="#how-to-use-procyon">How to use Procyon?</a></li><li><a href="#how-to-contribute-to-procyon">How to contribute to Procyon?</a></li><li><a href="#license">License</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/footer-logo.png" alt="Procyon"/></a><div><h5>Modules</h5><a href="/docs/module-procyon">Procyon</a><a href="/docs/module-procyon-core">Procyon Core</a><a href="/docs/module-procyon-context">Procyon Context</a><a href="/docs/module-procyon-web">Procyon Web</a><a href="/docs/module-procyon-peas">Procyon Peas</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Discord</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/procyon-projects/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Procyon</section></footer></div></body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Procyon · Procyon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="It is a main module providing all features of Procyon. "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Procyon · Procyon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://procyon-projects.github.io/"/><meta property="og:description" content="It is a main module providing all features of Procyon. "/><meta property="og:image" content="https://procyon-projects.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://procyon-projects.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/logo.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://procyon-projects.github.io/blog/atom.xml" title="Procyon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://procyon-projects.github.io/blog/feed.xml" title="Procyon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Procyon"/><h2 class="headerTitleWithLogo">Procyon</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/introduction" target="_self">Documentation</a></li><li class="siteNavGroupActive"><a href="/docs/modules" target="_self">Modules</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Modules</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Modules<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/modules">Introduction</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/module-procyon">Procyon</a></li><li class="navListItem"><a class="navItem" href="/docs/module-procyon-core">Procyon Core</a></li><li class="navListItem"><a class="navItem" href="/docs/module-procyon-context">Procyon Context</a></li><li class="navListItem"><a class="navItem" href="/docs/module-procyon-web">Procyon Web</a></li><li class="navListItem"><a class="navItem" href="/docs/module-procyon-peas">Procyon Peas</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Procyon</h1></header><article><div><span><p>It is a main module providing all features of Procyon.
+This part gives you a basic understanding of Procyon Module. That's why
+It covers only <strong>ApplicationRunListener</strong> and <strong>ApplicationRunner</strong> which it provides.</p>
+<h2><a class="anchor" aria-hidden="true" id="new-application"></a><a href="#new-application" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>New Application</h2>
+<p>To run an application with Procyon, create an instance of Procyon Application by
+using the function <strong>procyon.NewProcyonApplication</strong>.</p>
+<p>After that, it's easy to run, just call the method <strong>Run</strong>.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"github.com/procyon-projects/procyon"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    myApp := procyon.NewProcyonApplication()
+    myApp.Run()
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="application-run-listener"></a><a href="#application-run-listener" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application Run Listener</h2>
+<p>It's used to do something while application starts.</p>
+<p>Note that you need to register pea processors and initializers by using the function <strong>core.Register</strong>.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> ApplicationRunListener <span class="hljs-keyword">interface</span> {
+    OnApplicationStarting()
+    OnApplicationEnvironmentPrepared(environment core.ConfigurableEnvironment)
+    OnApplicationContextPrepared(context context.ConfigurableApplicationContext)
+    OnApplicationContextLoaded(context context.ConfigurableApplicationContext)
+    OnApplicationStarted(context context.ConfigurableApplicationContext)
+    OnApplicationRunning(context context.ConfigurableApplicationContext)
+    OnApplicationFailed(context context.ConfigurableApplicationContext, err error)
+}
+</code></pre>
+<ul>
+<li><strong>OnApplicationStarting</strong> is invoked when the application starts</li>
+<li><strong>OnApplicationEnvironmentPrepared</strong> is invoked when the environment of the application is prepared.</li>
+<li><strong>OnApplicationContextPrepared</strong>  is invoked when the context of the application is prepared.</li>
+<li><strong>OnApplicationContextLoaded</strong>  is invoked when the context of the application is loaded.</li>
+<li><strong>OnApplicationStarted</strong>  is invoked when the application is started.</li>
+<li><strong>OnApplicationRunning</strong>  is invoked when the application is run successfully.</li>
+<li><strong>OnApplicationFailed</strong>  is invoked if any error occurs while the application starts.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="application-runner"></a><a href="#application-runner" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application Runner</h2>
+<p>It's used to do something after application runs.</p>
+<p>Note that you need to register pea processors and initializers by using the function <strong>core.Register</strong>.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> ApplicationRunner <span class="hljs-keyword">interface</span> {
+    OnApplicationRun(context context.Context, arguments ApplicationArguments)
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/modules"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/docs/module-procyon-core"><span>Procyon Core</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-application">New Application</a></li><li><a href="#application-run-listener">Application Run Listener</a></li><li><a href="#application-runner">Application Runner</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/footer-logo.png" alt="Procyon"/></a><div><h5>Modules</h5><a href="/docs/module-procyon">Procyon</a><a href="/docs/module-procyon-core">Procyon Core</a><a href="/docs/module-procyon-context">Procyon Context</a><a href="/docs/module-procyon-web">Procyon Web</a><a href="/docs/module-procyon-peas">Procyon Peas</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Discord</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/procyon-projects/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Procyon</section></footer></div></body></html>

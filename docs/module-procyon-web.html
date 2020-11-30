@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Procyon Web · Procyon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This part gives you a basic understanding of Procyon Web Module. It covers"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Procyon Web · Procyon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://procyon-projects.github.io/"/><meta property="og:description" content="This part gives you a basic understanding of Procyon Web Module. It covers"/><meta property="og:image" content="https://procyon-projects.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://procyon-projects.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/logo.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://procyon-projects.github.io/blog/atom.xml" title="Procyon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://procyon-projects.github.io/blog/feed.xml" title="Procyon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Procyon"/><h2 class="headerTitleWithLogo">Procyon</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/introduction" target="_self">Documentation</a></li><li class="siteNavGroupActive"><a href="/docs/modules" target="_self">Modules</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Modules</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Modules<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/modules">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/module-procyon">Procyon</a></li><li class="navListItem"><a class="navItem" href="/docs/module-procyon-core">Procyon Core</a></li><li class="navListItem"><a class="navItem" href="/docs/module-procyon-context">Procyon Context</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/module-procyon-web">Procyon Web</a></li><li class="navListItem"><a class="navItem" href="/docs/module-procyon-peas">Procyon Peas</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Procyon Web</h1></header><article><div><span><p>This part gives you a basic understanding of Procyon Web Module. It covers
+components provided by the framework, such as Controller, Handler Registry, Web Request Context
+and Interceptors.</p>
+<p>Note that you need to register your components by using the function <strong>core.Register</strong>.</p>
+<h2><a class="anchor" aria-hidden="true" id="controller"></a><a href="#controller" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Controller</h2>
+<p>It's used to define a struct as a <strong>Controller Component</strong> and register handler methods. If it is implemented by your struct,
+your struct will be considered as a <strong>Controller</strong>.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> Controller <span class="hljs-keyword">interface</span> {
+    RegisterHandlers(registry HandlerRegistry)
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="handler-registry"></a><a href="#handler-registry" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Handler Registry</h2>
+<p>It's used to register handler methods.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> HandlerRegistry <span class="hljs-keyword">interface</span> {
+    Register(info ...RequestHandler)
+    RegisterGroup(prefix <span class="hljs-keyword">string</span>, info ...RequestHandler)
+}
+</code></pre>
+<ul>
+<li><p><strong>Register</strong> is used to register a Request Handler.</p></li>
+<li><p><strong>RegisterGroup</strong> are used to register multiple Request Handlers.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="request-handler"></a><a href="#request-handler" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Handler</h3>
+<p>They are used to get an instance of a request handler by request method.</p>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Get</span><span class="hljs-params">(handler RequestHandlerFunction, options ...RequestHandlerOption)</span> <span class="hljs-title">RequestHandler</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Post</span><span class="hljs-params">(handler RequestHandlerFunction, options ...RequestHandlerOption)</span> <span class="hljs-title">RequestHandler</span></span> 
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Put</span><span class="hljs-params">(handler RequestHandlerFunction, options ...RequestHandlerOption)</span> <span class="hljs-title">RequestHandler</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Delete</span><span class="hljs-params">(handler RequestHandlerFunction, options ...RequestHandlerOption)</span> <span class="hljs-title">RequestHandler</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Patch</span><span class="hljs-params">(handler RequestHandlerFunction, options ...RequestHandlerOption)</span> <span class="hljs-title">RequestHandler</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Options</span><span class="hljs-params">(handler RequestHandlerFunction, options ...RequestHandlerOption)</span> <span class="hljs-title">RequestHandler</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Head</span><span class="hljs-params">(handler RequestHandlerFunction, options ...RequestHandlerOption)</span> <span class="hljs-title">RequestHandler</span></span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="request-handler-options"></a><a href="#request-handler-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Handler Options</h3>
+<p>Options are used to specify handler's properties like Path and Request Object.</p>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">RequestObject</span><span class="hljs-params">(requestObject RequestHandlerObject)</span> <span class="hljs-title">RequestHandlerOption</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Path</span><span class="hljs-params">(path <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">RequestHandlerOption</span></span>
+</code></pre>
+<ul>
+<li><strong>RequestObject</strong> is used to specify the request object. If you have a request type, you have to register it.
+Otherwise, <strong>GetRequest</strong> will throw an error.</li>
+<li><strong>Path</strong> is used to specify the path.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="web-request-context"></a><a href="#web-request-context" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web Request Context</h2>
+<p><strong>WebRequestContext</strong> implements the interface <strong>context.Context</strong> in procyon-context. That's why
+it has the methods the following.</p>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetContextId</span><span class="hljs-params">()</span> <span class="hljs-title">context</span>.<span class="hljs-title">ContextId</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">Get</span><span class="hljs-params">(key <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">interface</span></span>{}
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">Put</span><span class="hljs-params">(key <span class="hljs-keyword">string</span>, value <span class="hljs-keyword">interface</span>{})</span></span>
+</code></pre>
+<ul>
+<li><strong>GetContextId</strong> returns a Context Id. It is unique and consists of <strong>UUID</strong>. It can be used
+for logging.</li>
+<li><strong>Get</strong> returns the value from context by the given key. If it is not found, it returns nil.</li>
+<li><strong>Put</strong> an key-value pair into context.</li>
+</ul>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">Next</span><span class="hljs-params">()</span></span>
+</code></pre>
+<ul>
+<li><strong>Next</strong> can only be invoked from <strong>HandleBefore</strong>. If you call it from other methods or
+functions, nothing will happen. When <strong>Next</strong> is invoked, it calls next interceptor implementing
+<strong>HandlerInterceptorBefore</strong>.</li>
+</ul>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetRequest</span><span class="hljs-params">(request <span class="hljs-keyword">interface</span>{})</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetPathVariable</span><span class="hljs-params">(name <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">string</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetRequestParameter</span><span class="hljs-params">(name <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">string</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetHeaderValue</span><span class="hljs-params">(key <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">string</span></span>
+</code></pre>
+<ul>
+<li><strong>GetRequest</strong> is used to bind the request data to the instance of the request object.</li>
+<li><strong>GetPathVariable</strong> is used to get the path variable by name</li>
+<li><strong>GetRequestParameter</strong> is used to get the request parameter by name.</li>
+<li><strong>GetHeaderValue</strong> is used to get the header value by name.</li>
+</ul>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetStatus</span><span class="hljs-params">()</span> <span class="hljs-title">int</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">SetStatus</span><span class="hljs-params">(status <span class="hljs-keyword">int</span>)</span> <span class="hljs-title">ResponseBodyBuilder</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">SetBody</span><span class="hljs-params">(body <span class="hljs-keyword">interface</span>{})</span> <span class="hljs-title">ResponseBodyBuilder</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetBody</span><span class="hljs-params">()</span> <span class="hljs-title">interface</span></span>{}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetContentType</span><span class="hljs-params">()</span> <span class="hljs-title">MediaType</span></span> 
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">SetContentType</span><span class="hljs-params">(mediaType MediaType)</span> <span class="hljs-title">ResponseBodyBuilder</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">AddHeader</span><span class="hljs-params">(key <span class="hljs-keyword">string</span>, value <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">ResponseHeaderBuilder</span></span>
+</code></pre>
+<ul>
+<li><strong>GetStatus</strong> is used to get the status.</li>
+<li><strong>SetStatus</strong> is used to set the status of response.</li>
+<li><strong>SetBody</strong> is used to set the body of response.</li>
+<li><strong>GetBody</strong> is used to get the body of response.</li>
+<li><strong>GetContentType</strong> is used to get the content type.</li>
+<li><strong>SetContentType</strong> is used to set the content type</li>
+</ul>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">Ok</span><span class="hljs-params">()</span> <span class="hljs-title">ResponseBodyBuilder</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">NotFound</span><span class="hljs-params">()</span> <span class="hljs-title">ResponseHeaderBuilder</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">NoContent</span><span class="hljs-params">()</span> <span class="hljs-title">ResponseHeaderBuilder</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">BadRequest</span><span class="hljs-params">()</span> <span class="hljs-title">ResponseBodyBuilder</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">Accepted</span><span class="hljs-params">()</span> <span class="hljs-title">ResponseBodyBuilder</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">Created</span><span class="hljs-params">(location <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">ResponseBodyBuilder</span></span>
+</code></pre>
+<ul>
+<li><strong>Ok</strong> sets the status to 200.</li>
+<li><strong>NotFound</strong> sets the status to 404.</li>
+<li><strong>NoContent</strong> sets the status to 204.</li>
+<li><strong>BadRequest</strong> sets the status to 400.</li>
+<li><strong>Accepted</strong> sets the status to 202.</li>
+<li><strong>Created</strong> sets the status to 201.</li>
+</ul>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">GetError</span><span class="hljs-params">()</span> <span class="hljs-title">error</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">SetError</span><span class="hljs-params">(err error)</span></span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ctx *WebRequestContext)</span> <span class="hljs-title">ThrowError</span><span class="hljs-params">(err error)</span></span>
+</code></pre>
+<ul>
+<li><strong>GetError</strong> is used to get the error.</li>
+<li><strong>SetError</strong> is used to put the error into context.</li>
+<li><strong>ThrowError</strong> is used to throw an error. It's an alternative to <strong>SetError</strong></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="interceptors"></a><a href="#interceptors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interceptors</h2>
+<p>Interceptors are used to manipulate requests and responses.</p>
+<p><strong>HandlerBefore</strong>,Handler Method and <strong>HandlerAfter</strong>, <strong>HandleAfterCompletion</strong> are invoked
+respectively.</p>
+<h3><a class="anchor" aria-hidden="true" id="interceptor-before"></a><a href="#interceptor-before" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interceptor Before</h3>
+<p>If you want to do something before handler method is executed, implement the interface
+<strong>HandlerInterceptorBefore</strong>.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> HandlerInterceptorBefore <span class="hljs-keyword">interface</span> {
+    HandleBefore(requestContext *WebRequestContext)
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="interceptor-after"></a><a href="#interceptor-after" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interceptor After</h3>
+<p>If you want to do something after handler method is executed, implement the interface
+<strong>HandlerInterceptorAfter</strong>.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> HandlerInterceptorAfter <span class="hljs-keyword">interface</span> {
+    HandleAfter(requestContext *WebRequestContext)
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="interceptor-after-completion"></a><a href="#interceptor-after-completion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interceptor After Completion</h3>
+<p>If you want to do something after the request process is completed, implement the interface
+<strong>HandlerInterceptorAfterCompletion</strong>. <strong>HandlerAfterCompletion</strong> is invoked after response is
+returned successfully or when any error occurs while request is processed. In case of an error,
+You can get the error from request context.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> HandlerInterceptorAfterCompletion <span class="hljs-keyword">interface</span> {
+    HandleAfterCompletion(requestContext *WebRequestContext)
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/module-procyon-context"><span class="arrow-prev">← </span><span>Procyon Context</span></a><a class="docs-next button" href="/docs/module-procyon-peas"><span>Procyon Peas</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#controller">Controller</a></li><li><a href="#handler-registry">Handler Registry</a><ul class="toc-headings"><li><a href="#request-handler">Request Handler</a></li><li><a href="#request-handler-options">Request Handler Options</a></li></ul></li><li><a href="#web-request-context">Web Request Context</a></li><li><a href="#interceptors">Interceptors</a><ul class="toc-headings"><li><a href="#interceptor-before">Interceptor Before</a></li><li><a href="#interceptor-after">Interceptor After</a></li><li><a href="#interceptor-after-completion">Interceptor After Completion</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/footer-logo.png" alt="Procyon"/></a><div><h5>Modules</h5><a href="/docs/module-procyon">Procyon</a><a href="/docs/module-procyon-core">Procyon Core</a><a href="/docs/module-procyon-context">Procyon Context</a><a href="/docs/module-procyon-web">Procyon Web</a><a href="/docs/module-procyon-peas">Procyon Peas</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Discord</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/procyon-projects/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Procyon</section></footer></div></body></html>

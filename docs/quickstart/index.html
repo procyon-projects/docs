@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Quickstart · Procyon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This quickstart gives you a basic understanding of creating a simple endpoint and how to do"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Quickstart · Procyon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://procyon-projects.github.io/"/><meta property="og:description" content="This quickstart gives you a basic understanding of creating a simple endpoint and how to do"/><meta property="og:image" content="https://procyon-projects.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://procyon-projects.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/logo.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://procyon-projects.github.io/blog/atom.xml" title="Procyon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://procyon-projects.github.io/blog/feed.xml" title="Procyon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Procyon"/><h2 class="headerTitleWithLogo">Procyon</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Documentation</a></li><li class=""><a href="/docs/modules" target="_self">Modules</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Getting Started<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/quickstart">Quickstart</a></li><li class="navListItem"><a class="navItem" href="/docs/benchmarks">Benchmarks</a></li><li class="navListItem"><a class="navItem" href="/docs/features">Features</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Quickstart</h1></header><article><div><span><p>This quickstart gives you a basic understanding of creating a simple endpoint and how to do
+by using Procyon Framework.</p>
+<h2><a class="anchor" aria-hidden="true" id="components"></a><a href="#components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Components</h2>
+<p>Components are the part of Procyon Framework. Controller, Service, Repository, Initializers, etc.
+are considered as component.</p>
+<h2><a class="anchor" aria-hidden="true" id="register-components"></a><a href="#register-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Register Components</h2>
+<p>If you have a component like a Controller, you need to notify it to Procyon as Go language
+doesn't have annotation and similar reflection library like Java. You don't need to be worried about it.
+The only thing you have to do is to use method <strong>core.Register</strong> in <strong>init</strong>, as the following below.
+It is placed in module <strong>procyon-core</strong>.</p>
+<p><strong>Note that you have to give a function with only one return parameter, which will create a instance of the controller.</strong></p>
+<p><strong>config.go</strong></p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (
+    core <span class="hljs-string">"github.com/procyon-projects/procyon-core"</span>
+    <span class="hljs-string">"github.com/procyon-projects/procyon-test-app/controller"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">/* Controllers */</span>
+    core.Register(controller.NewHelloWorldController)
+}
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="first-controller"></a><a href="#first-controller" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>First Controller</h2>
+<p>The first thing you have to do to have a controller component in Procyon is to implement
+interface <strong>Controller</strong>.</p>
+<p>The interface <strong>Controller</strong> looks like the following below. It is placed in module <strong>procyon-web</strong>.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> Controller <span class="hljs-keyword">interface</span> {
+    RegisterHandlers(registry HandlerRegistry)
+}
+</code></pre>
+<p>A simple controller will looks like the following below. It might change based on your needs.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> HelloWorldController <span class="hljs-keyword">struct</span> {
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewHelloWorldController</span><span class="hljs-params">()</span> <span class="hljs-title">HelloWorldController</span></span> {
+    <span class="hljs-keyword">return</span> HelloWorldController{}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(controller HelloWorldController)</span> <span class="hljs-title">RegisterHandlers</span><span class="hljs-params">(registry web.HandlerRegistry)</span></span> {
+    ...
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(controller HelloWorldController)</span> <span class="hljs-title">HelloWorld</span><span class="hljs-params">(context *web.WebRequestContext)</span></span> {
+    context.Ok().SetBody(<span class="hljs-string">"Hello World"</span>)
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="registry-handlers"></a><a href="#registry-handlers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Registry Handlers</h2>
+<p>Your handler registrations should be done by using <strong>registry</strong> which will
+be passed into the method <strong>RegisterHandlers</strong>, as you can see the following.</p>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(controller HelloWorldController)</span> <span class="hljs-title">RegisterHandlers</span><span class="hljs-params">(registry web.HandlerRegistry)</span></span> {
+    registry.Register(
+        web.Get(controller.HelloWorld, web.Path(<span class="hljs-string">"/api/helloworld"</span>))
+    )
+}
+</code></pre>
+<p>You can see the complete code below. It is easy that much to create a controller and register
+your handlers.</p>
+<p><strong>controller.go</strong></p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> HelloWorldController <span class="hljs-keyword">struct</span> {
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewHelloWorldController</span><span class="hljs-params">()</span> <span class="hljs-title">NewHelloWorldController</span></span> {
+    <span class="hljs-keyword">return</span> HelloWorldController{}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(controller HelloWorldController)</span> <span class="hljs-title">RegisterHandlers</span><span class="hljs-params">(registry web.HandlerRegistry)</span></span> {
+    registry.Register(
+        web.Get(controller.HelloWorld, web.Path(<span class="hljs-string">"/api/helloworld"</span>))
+    )
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(controller HelloWorldController)</span> <span class="hljs-title">HelloWorld</span><span class="hljs-params">(context *web.WebRequestContext)</span></span> {
+    context.Ok().SetBody(<span class="hljs-string">"Hello World"</span>)
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="run-application"></a><a href="#run-application" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run Application</h2>
+<p>If you run your application without giving any parameter port, it will start on port 8080
+as you can see following.</p>
+<p><img src="/img/run-console.png" alt="Image of Console Running"></p>
+<p>If you want to change the port on which the application start, you can specify parameter <strong>--server.port</strong>.
+When you specify the parameter port as 3030 (<strong>--server.port=3030</strong>), your application will start on <strong>port 3030</strong>.</p>
+<h2><a class="anchor" aria-hidden="true" id="request-the-endpoint"></a><a href="#request-the-endpoint" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request the endpoint</h2>
+<p>We assume that you do all steps which needs to be done and have a running application, then it's time to request
+the endpoint <strong>/api/helloworld</strong> which we create.</p>
+<p><img src="/img/api-helloworld.png" alt="Image of Console Running"></p>
+<p>If you want to have a good understanding of Procyon framework and work with advanced examples, move on.
+However, you might want to look into the result of Benchmarks before moving on. Next part, the Benchmark results will be shown.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/introduction"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/docs/benchmarks"><span>Benchmarks</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#components">Components</a></li><li><a href="#register-components">Register Components</a></li><li><a href="#first-controller">First Controller</a></li><li><a href="#registry-handlers">Registry Handlers</a></li><li><a href="#run-application">Run Application</a></li><li><a href="#request-the-endpoint">Request the endpoint</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/footer-logo.png" alt="Procyon"/></a><div><h5>Modules</h5><a href="/docs/module-procyon">Procyon</a><a href="/docs/module-procyon-core">Procyon Core</a><a href="/docs/module-procyon-context">Procyon Context</a><a href="/docs/module-procyon-web">Procyon Web</a><a href="/docs/module-procyon-peas">Procyon Peas</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Discord</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/procyon-projects/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Procyon</section></footer></div></body></html>
